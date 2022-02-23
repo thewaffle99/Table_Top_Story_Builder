@@ -8,6 +8,8 @@ import DeleteButton from "../components/DeleteButton";
 function WorldEdit(props) {
   const navigate = useNavigate();
   const nameOfForm = "Update";
+  const type = "world";
+
   const { id } = useParams();
   const [errors, setErrors] = useState({});
   const [placeList, setPlaceList] = useState([]);
@@ -59,7 +61,7 @@ function WorldEdit(props) {
             errors={errors}
             nameOfForm={nameOfForm}
           />
-          <DeleteButton id={updatedWorld._id} />
+          <DeleteButton id={updatedWorld._id} type={type} />
         </div>
       </div>
       <div className="d-flex justify-content-center">
@@ -81,7 +83,7 @@ function WorldEdit(props) {
                     backgroundColor: "grey",
                     fontSize: "20px",
                   }}
-                  to={`/api/place/${place._id}`}
+                  to={`/api/edit/place/${place._id}`}
                   key={index}
                 >
                   {place.name}
@@ -91,7 +93,7 @@ function WorldEdit(props) {
         </div>
         <div className="m-3 d-flex flex-column align-items-center ">
           <h2>NPCs:</h2>
-          <Link className="btn btn-dark" to={"/createNPC"}>
+          <Link className="btn btn-dark" to={`/createNPC/${updatedWorld._id}`}>
             Create NPC
           </Link>
           {NPCList
@@ -104,7 +106,7 @@ function WorldEdit(props) {
                     backgroundColor: "grey",
                     fontSize: "20px",
                   }}
-                  to={`/api/npc/${NPC._id}`}
+                  to={`/api/edit/npc/${NPC._id}`}
                   key={index}
                 >
                   {NPC.name}

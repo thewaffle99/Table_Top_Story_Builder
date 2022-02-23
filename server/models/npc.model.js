@@ -45,10 +45,10 @@ const NPCSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    place: {
-      type: String,
-      required: [true],
-    },
+    // place: {
+    //   type: String,
+    //   required: [true],
+    // },
     associatedWorld: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "World",

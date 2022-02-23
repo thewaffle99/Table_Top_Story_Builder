@@ -85,7 +85,7 @@ function WorldForm(props) {
           </div>
           <div>
             <Link className=" mx-5 btn btn-secondary" to="/">
-              Cancel
+              Back
             </Link>
             <button type="submit" className=" btn btn-dark">
               {nameOfForm} World

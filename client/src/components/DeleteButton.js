@@ -3,11 +3,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function DeleteButton(props) {
-  const { id } = props;
+  const { id, type } = props;
   const navigate = useNavigate();
   const deleteHandler = () => {
     axios
-      .delete(`http://localhost:8000/api/world/${id}`)
+      .delete(`http://localhost:8000/api/${type}/${id}`)
       .then((res) => {
         console.log(res);
         console.log(res.data);

@@ -1,44 +1,50 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import PlaceForm from "../components/PlaceForm";
+import NPCForm from "../components/NPCForm";
 import DeleteButton from "../components/DeleteButton";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-function PlaceEdit(props) {
+function NPCEdit() {
   const navigate = useNavigate();
   const nameOfForm = "Update";
-  const type = "place";
+  const type = "NPC";
   const { id } = useParams();
   const [errors, setErrors] = useState({});
 
-  const [updatedPlace, setUpdatedPlace] = useState({
+  const [updatedNPC, setUpdatedNPC] = useState({
     name: "",
+    health: "",
+    attack: "",
+    occupation: "",
+    want: "",
+    infoTheyKnow: "",
     enemies: "",
     allies: "",
-    uniqueFeatures: "",
-    suprisedToSeeWho: "",
-    suprisedToSeeWhat: "",
-    prejudices: "",
-    placeNotes: "",
+    physicalChar: "",
+    flawOrIdeal: "",
+    valuables: "",
+    secret: "",
+    NPCNotes: "",
     photo: "",
+    // place: "",
   });
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/place/${id}`)
+      .get(`http://localhost:8000/api/npc/${id}`)
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        setUpdatedPlace(res.data);
+        setUpdatedNPC(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const updateSubmitHandlerPlace = (e) => {
+  const updateSubmitHandlerNPC = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:8000/api/place/${id}`, updatedPlace)
+      .put(`http://localhost:8000/api/npc/${id}`, updatedNPC)
       .then((res) => {
         console.log(res);
       })
@@ -51,16 +57,16 @@ function PlaceEdit(props) {
   return (
     <div>
       <Header />
-      <PlaceForm
-        place={updatedPlace}
-        setPlace={setUpdatedPlace}
-        submitHandler={updateSubmitHandlerPlace}
+      <NPCForm
+        NPC={updatedNPC}
+        setNPC={setUpdatedNPC}
+        submitHandler={updateSubmitHandlerNPC}
         errors={errors}
         nameOfForm={nameOfForm}
       />
-      <DeleteButton id={updatedPlace._id} type={type} />
+      <DeleteButton id={updatedNPC._id} type={type} />
     </div>
   );
 }
 
-export default PlaceEdit;
+export default NPCEdit;

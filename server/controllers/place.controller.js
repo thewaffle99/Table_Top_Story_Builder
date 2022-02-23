@@ -43,7 +43,7 @@ module.exports.getAllPlaces = (request, response) => {
 module.exports.getPlace = (request, response) => {
   Place.findOne({ _id: request.params.id })
     .populate("associatedWorld", "name _id")
-    .then((place) => response.json(Place))
+    .then((place) => response.json(place))
     .catch((err) => response.json(err));
 };
 module.exports.updatePlace = (request, response) => {

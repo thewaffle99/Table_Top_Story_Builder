@@ -12,11 +12,15 @@ function PlaceForm(props) {
     console.log("e.target.value = ", e.target.value);
     setPlace(newStateObject);
   };
-
   return (
     <div className="mx-5">
       <form onSubmit={submitHandler}>
         <div className="mb-5 d-flex flex-column align-items-center justify-content-center">
+          <img
+            style={{ width: "200px" }}
+            className="d-flex flex-column align-items-center justify-content-center"
+            src={place.photo}
+          />
           <label>Place Name:</label>
           <input
             name="name"
@@ -113,7 +117,7 @@ function PlaceForm(props) {
         </div>
         <div className="d-flex justify-content-center">
           <Link className=" mx-5 btn btn-secondary" to="/">
-            Cancel
+            Back
           </Link>
           <button type="submit" className=" btn btn-dark">
             {nameOfForm} Place

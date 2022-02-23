@@ -1,33 +1,39 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import PlaceForm from "../components/PlaceForm";
+import NPCForm from "../components/NPCForm";
 import Header from "../components/Header";
 
-function PlaceCreate(props) {
+function NPCCreate(props) {
   const { id } = useParams();
   const [errors, setErrors] = useState({});
   const nameOfForm = "Create";
 
   const navigate = useNavigate();
 
-  const [newPlace, setNewPlace] = useState({
+  const [newNPC, setNewNPC] = useState({
     name: "",
+    health: "",
+    attack: "",
+    occupation: "",
+    want: "",
+    infoTheyKnow: "",
     enemies: "",
     allies: "",
-    uniqueFeatures: "",
-    suprisedToSeeWho: "",
-    suprisedToSeeWhat: "",
-    prejudices: "",
-    placeNotes: "",
+    physicalChar: "",
+    flawOrIdeal: "",
+    valuables: "",
+    secret: "",
+    NPCNotes: "",
     photo: "",
+    // place: "",
     associatedWorld: `${id}`,
   });
 
   const newSubmitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8000/api/places", newPlace)
+      .post("http://localhost:8000/api/npcs", newNPC)
       .then((res) => {
         console.log(res);
         navigate(`/api/edit/world/${id}`);
@@ -41,17 +47,14 @@ function PlaceCreate(props) {
   return (
     <div>
       <Header />
-
-      <PlaceForm
-        worldId={id}
-        place={newPlace}
-        setPlace={setNewPlace}
+      <NPCForm
+        NPC={newNPC}
+        setNPC={setNewNPC}
         submitHandler={newSubmitHandler}
-        errors={errors}
         nameOfForm={nameOfForm}
       />
     </div>
   );
 }
 
-export default PlaceCreate;
+export default NPCCreate;

@@ -4,6 +4,8 @@ import WorldCreate from "./views/WorldCreate";
 import PlaceCreate from "./views/PlaceCreate";
 import PlaceEdit from "./views/PlaceEdit";
 import WorldEdit from "./views/WorldEdit";
+import NPCCreate from "./views/NPCCreate";
+import NPCEdit from "./views/NPCEdit";
 import "bootstrap/dist/css/bootstrap.min.css";
 import WorldsHome from "./views/WorldsHome";
 
@@ -25,9 +27,8 @@ function App() {
           <Route path="/api/edit/world/:id" element={<WorldEdit />} />
           <Route path="/createPlace/:id" element={<PlaceCreate />} />
           <Route path="/api/edit/place/:id" element={<PlaceEdit />} />
-
-          {/* <Route path="/createNPC" element={<NPCCreate />} /> */}
-          {/* <Route path="/api/edit/npc/:id" element={<NPCEdit />} /> */}
+          <Route path="/createNPC/:id" element={<NPCCreate />} />
+          <Route path="/api/edit/npc/:id" element={<NPCEdit />} />
         </Routes>
       </div>
     </BrowserRouter>
