@@ -52,6 +52,7 @@ function WorldEdit(props) {
   return (
     <div>
       <Header />
+
       <div className="mb-5 d-flex justify-content-center align-items-center">
         <div>
           <WorldForm
@@ -61,7 +62,7 @@ function WorldEdit(props) {
             errors={errors}
             nameOfForm={nameOfForm}
           />
-          <DeleteButton id={updatedWorld._id} type={type} />
+          <DeleteButton id={updatedWorld._id} type={type} navigateUrl={"/"} />
         </div>
       </div>
       <div className="d-flex justify-content-center">

@@ -64,7 +64,11 @@ function NPCEdit() {
         errors={errors}
         nameOfForm={nameOfForm}
       />
-      <DeleteButton id={updatedNPC._id} type={type} />
+      <DeleteButton
+        id={updatedNPC._id}
+        type={type}
+        navigateUrl={`/api/edit/world/${updatedNPC.associatedWorld}`}
+      />
     </div>
   );
 }

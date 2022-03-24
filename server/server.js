@@ -13,5 +13,6 @@ require("./config/mongoose.config");
 require("./routes/world.routes")(app);
 require("./routes/place.routes")(app);
 require("./routes/npc.routes")(app);
+require("./routes/user.routes")(app);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

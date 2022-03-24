@@ -58,7 +58,11 @@ function PlaceEdit(props) {
         errors={errors}
         nameOfForm={nameOfForm}
       />
-      <DeleteButton id={updatedPlace._id} type={type} />
+      <DeleteButton
+        id={updatedPlace._id}
+        type={type}
+        navigateUrl={`/api/edit/world/${updatedPlace.associatedWorld}`}
+      />
     </div>
   );
 }
