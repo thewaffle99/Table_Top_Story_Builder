@@ -63,6 +63,7 @@ function NPCEdit() {
         submitHandler={updateSubmitHandlerNPC}
         errors={errors}
         nameOfForm={nameOfForm}
+        navigateUrl={`/api/edit/world/${updatedNPC.associatedWorld}`}
       />
       <DeleteButton
         id={updatedNPC._id}

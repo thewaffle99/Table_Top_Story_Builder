@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function NPCForm(props) {
-  const { NPC, setNPC, submitHandler, errors, nameOfForm } = props;
+  const { NPC, setNPC, submitHandler, errors, nameOfForm, navigateUrl } = props;
 
   const onChangeHandler = (e) => {
     const newStateObject = { ...NPC };
@@ -184,7 +184,7 @@ function NPCForm(props) {
           </div>
         </div>
         <div className="mt-3 d-flex justify-content-center">
-          <Link className=" mx-5 btn btn-secondary" to="/">
+          <Link className=" mx-5 btn btn-secondary" to={navigateUrl}>
             Back
           </Link>
           <button type="submit" className=" btn btn-dark">

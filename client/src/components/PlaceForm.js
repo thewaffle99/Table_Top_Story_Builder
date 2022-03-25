@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function PlaceForm(props) {
-  const { place, setPlace, submitHandler, errors, nameOfForm, worldId } = props;
+  const { place, setPlace, submitHandler, errors, nameOfForm, navigateUrl } =
+    props;
 
   const onChangeHandler = (e) => {
     const newStateObject = { ...place };
@@ -116,7 +117,7 @@ function PlaceForm(props) {
           </div>
         </div>
         <div className="d-flex justify-content-center">
-          <Link className=" mx-5 btn btn-secondary" to="/">
+          <Link className=" mx-5 btn btn-secondary" to={navigateUrl}>
             Back
           </Link>
           <button type="submit" className=" btn btn-dark">

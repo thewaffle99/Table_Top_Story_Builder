@@ -57,6 +57,7 @@ function PlaceEdit(props) {
         submitHandler={updateSubmitHandlerPlace}
         errors={errors}
         nameOfForm={nameOfForm}
+        navigateUrl={`/api/edit/world/${updatedPlace.associatedWorld}`}
       />
       <DeleteButton
         id={updatedPlace._id}
