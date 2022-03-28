@@ -1,5 +1,6 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   register: (req, res) => {
@@ -43,6 +44,27 @@ module.exports = {
             .then((isPasswordValid) => {
               if (isPasswordValid) {
                 console.log("Password is Valid");
+                res
+                  .cookie(
+                    "usertoken",
+                    jwt.sign(
+                      {
+                        id: userRecord._id,
+                        email: userRecord.email,
+                        firstName: userRecord.firstName,
+                        lastName: userRecord.lastName,
+                      },
+                      process.env.JWT_SECRET
+                    ),
+                    {
+                      httpOnly: true,
+                      expires: new Date(Date.now() + 9000000),
+                    }
+                  )
+                  .json({
+                    message: "Successfully Logged In",
+                    userId: userRecord._id,
+                  });
                 res.json({ message: "You have successfully Logged in" });
               } else {
                 res.status(400).json({
@@ -63,6 +85,7 @@ module.exports = {
   },
   logout: (req, res) => {
     console.log("Loggin out");
+    re.clearCookie("usertoken");
     res.json({
       message: "You have logged out",
     });

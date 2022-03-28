@@ -1,12 +1,15 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const app = express();
-const port = 8000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
+
+app.use(cookieParser());
 
 require("./config/mongoose.config");
 
@@ -15,4 +18,6 @@ require("./routes/place.routes")(app);
 require("./routes/npc.routes")(app);
 require("./routes/user.routes")(app);
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(process.env.MY_PORT, () =>
+  console.log(`Listening on port ${process.env.MY_PORT}`)
+);

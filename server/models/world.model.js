@@ -33,6 +33,10 @@ const WorldSchema = new mongoose.Schema(
         ref: "NPC",
       },
     ],
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );
