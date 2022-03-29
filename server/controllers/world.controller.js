@@ -1,22 +1,26 @@
 const World = require("../models/world.model");
 const jwt = require("jsonwebtoken");
 
-module.exports.createWorld = (request, response) => {
+module.exports.createWorld = (req, res) => {
   const newWorldObject = new World(req.body);
 
-  const decodedJWT = jwt.decode(req.cookies.usertoken, {
-    complete: true,
-  });
+  newWorldObject.createdBy = req.jwtpayload.id;
 
-  newWorldObject.createdBy = decodedJWT.payload.id;
+  // or you can use the below code
 
-  World.create(request.body)
+  // const decodedJWT = jwt.decode(req.cookies.usertoken, {
+  //   complete: true,
+  // });
+
+  // newWorldObject.createdBy = decodedJWT.payload.id;
+
+  World.create(req.body)
     .then((world) => {
-      response.json(world);
+      res.json(world);
     })
     .catch((err) => {
       console.log(err);
-      response.status(400).json(err);
+      res.status(400).json(err);
     });
 };
 
@@ -56,4 +60,35 @@ module.exports.deleteWorld = (request, response) => {
   World.deleteOne({ _id: request.params.id })
     .then((deleteConfirmation) => response.json(deleteConfirmation))
     .catch((err) => response.json(err));
+};
+
+module.exports.findAllWorldsByUser = (req, res) => {
+  if (req.jwtpayload !== req.params.username) {
+    User.findOne({ username: req.params.username })
+      .then((userNotLoggedIn) => {
+        Game.find({ createdBy: userNotLoggedIn._id })
+          .then((allWorldsFromUser) => {
+            console.log(allWorldsFromUser);
+            res.json(allWorldsFromUser);
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(400).json(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+  } else {
+    World.find({ createdBy: req.jwtpayload.id })
+      .then((allWorldsFromLoggedInUser) => {
+        console.log(allWorldsFromLoggedInUser);
+        res.json(allWorldsFromLoggedInUser);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+  }
 };

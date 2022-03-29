@@ -91,13 +91,28 @@ module.exports = {
     });
   },
 
-  getOneUser: (req, res) => {
-    User.findOne({ _id: req.params.id })
-      .then((oneUser) => {
-        res.json(oneUser);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  // for security purposes we are going to use a different way to get users
+
+  // getOneUser: (req, res) => {
+  //   User.findOne({ _id: req.params.id })
+  //     .then((oneUser) => {
+  //       res.json(oneUser);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // },
+
+  getLoggedInUser: (req, res) => {
+    User.findOne({ _id: decodedJwt.payload.id })
+      .then((user) => res.json(user))
+      .catch((err) => res.json(err));
+  },
+
+  findAllUsers: (req, res) => {
+    User.find().then((allUsers) => {
+      console.log("Find All Users failed");
+      res.json({ message: "Something went Wrong in findAll", error: err });
+    });
   },
 };
