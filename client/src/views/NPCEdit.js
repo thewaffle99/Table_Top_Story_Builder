@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import NPCForm from "../components/NPCForm";
 import DeleteButton from "../components/DeleteButton";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function NPCEdit() {
-  const navigate = useNavigate();
   const nameOfForm = "Update";
   const type = "NPC";
   const { id } = useParams();

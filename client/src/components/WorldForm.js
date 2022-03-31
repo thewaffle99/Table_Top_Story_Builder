@@ -84,7 +84,7 @@ function WorldForm(props) {
             </div>
           </div>
           <div>
-            <Link className=" mx-5 btn btn-secondary" to="/">
+            <Link className=" mx-5 btn btn-secondary" to="/home">
               Back
             </Link>
             <button type="submit" className=" btn btn-dark">

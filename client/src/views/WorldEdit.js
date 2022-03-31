@@ -41,7 +41,7 @@ function WorldEdit(props) {
       .put(`http://localhost:8000/api/world/${id}`, updatedWorld)
       .then((res) => {
         console.log(res);
-        navigate("/");
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err.response.data);

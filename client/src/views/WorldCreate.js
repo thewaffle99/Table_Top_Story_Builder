@@ -25,7 +25,7 @@ function WorldCreate(props) {
       .post("http://localhost:8000/api/worlds", newWorld)
       .then((res) => {
         console.log(res);
-        navigate("/");
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err);

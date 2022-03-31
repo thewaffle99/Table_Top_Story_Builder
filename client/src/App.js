@@ -8,7 +8,7 @@ import NPCCreate from "./views/NPCCreate";
 import NPCEdit from "./views/NPCEdit";
 import "bootstrap/dist/css/bootstrap.min.css";
 import WorldsHome from "./views/WorldsHome";
-
+import LoginReg from "./views/LoginReg";
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +22,8 @@ function App() {
         }}
       >
         <Routes>
-          <Route path="/" element={<WorldsHome />} />
+          <Route path="/" element={<LoginReg />} />
+          <Route path="/home" element={<WorldsHome />} />
           <Route path="/createWorld" element={<WorldCreate />} />
           <Route path="/api/edit/world/:id" element={<WorldEdit />} />
           <Route path="/createPlace/:id" element={<PlaceCreate />} />
