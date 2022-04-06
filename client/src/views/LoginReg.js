@@ -7,7 +7,7 @@ const LoginReg = (props) => {
   return (
     <div>
       <Header />
-      <div className="d-flex justify-content-around mx-5 mt-5">
+      <div className="d-flex align-items-center justify-content-center mt-5">
         <Login />
         <Register />
       </div>

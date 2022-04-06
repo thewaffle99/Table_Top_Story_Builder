@@ -1,9 +1,72 @@
-import React, { useState, useEffect } from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const login = (event) => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:8000/api/users/login", user, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res, "res");
+        console.log(res.data, "res data!");
+        setUser({
+          email: "",
+          password: "",
+        });
+        navigate("/home");
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        setErrorMessage(err.response.data);
+      });
+  };
+
   return (
-    <div>
+    <div className="d-flex flex-column align-items-center mx-5">
       <h1>Login</h1>
+      <p className="danger">{errorMessage ? errorMessage : ""}</p>
+      <form onSubmit={login} className="d-flex flex-column align-items-center">
+        <div className="d-flex flex-column align-items-center">
+          <label>Email</label>
+          <input
+            type="text"
+            name="email"
+            value={user.email}
+            onChange={handleChange}
+          ></input>
+        </div>
+        <div className="d-flex flex-column align-items-center">
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={user.password}
+            onChange={handleChange}
+          ></input>
+        </div>
+
+        <button type="submit" className="btn btn-secondary mt-3">
+          Login
+        </button>
+      </form>
     </div>
   );
 };

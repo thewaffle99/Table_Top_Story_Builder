@@ -2,9 +2,9 @@ const WorldController = require("../controllers/world.controller");
 const { authenticate } = require("../config/jwt.config");
 
 module.exports = (app) => {
-  app.post("/api/worlds", WorldController.createWorld);
+  app.post("/api/worlds", authenticate, WorldController.createWorld);
   app.get(
-    "/api/worlds/:username",
+    "/api/worlds/:userName",
     authenticate,
     WorldController.findAllWorldsByUser
   );

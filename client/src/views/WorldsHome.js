@@ -9,7 +9,7 @@ function WorldsHome() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/worlds")
+      .get(`http://localhost:8000/api/worlds`)
       .then((res) => {
         console.log(res.data);
         setWorlds(res.data);

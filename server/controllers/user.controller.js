@@ -50,6 +50,7 @@ module.exports = {
                     jwt.sign(
                       {
                         id: userRecord._id,
+                        userName: userRecord.userName,
                         email: userRecord.email,
                         firstName: userRecord.firstName,
                         lastName: userRecord.lastName,
@@ -58,14 +59,13 @@ module.exports = {
                     ),
                     {
                       httpOnly: true,
-                      expires: new Date(Date.now() + 9000000),
+                      // expires: new Date(Date.now() + 9000000),
                     }
                   )
                   .json({
                     message: "Successfully Logged In",
                     userId: userRecord._id,
                   });
-                res.json({ message: "You have successfully Logged in" });
               } else {
                 res.status(400).json({
                   message: "Login or email invalid",
@@ -104,6 +104,7 @@ module.exports = {
   // },
 
   getLoggedInUser: (req, res) => {
+    const decodedJwt = jwt.decode(req.cookies.usertoken, { complete: true });
     User.findOne({ _id: decodedJwt.payload.id })
       .then((user) => res.json(user))
       .catch((err) => res.json(err));

@@ -1,5 +1,6 @@
 const World = require("../models/world.model");
 const jwt = require("jsonwebtoken");
+const User = require("../models/user.model");
 
 module.exports.createWorld = (req, res) => {
   const newWorldObject = new World(req.body);
@@ -11,10 +12,10 @@ module.exports.createWorld = (req, res) => {
   // const decodedJWT = jwt.decode(req.cookies.usertoken, {
   //   complete: true,
   // });
-
   // newWorldObject.createdBy = decodedJWT.payload.id;
 
-  World.create(req.body)
+  newWorldObject
+    .save(req.body)
     .then((world) => {
       res.json(world);
     })
@@ -26,7 +27,7 @@ module.exports.createWorld = (req, res) => {
 
 module.exports.getAllWorlds = (request, response) => {
   World.find({})
-    .populate("createdBy", "firstName lastName email")
+    .populate("createdBy", "userName firstName lastName email")
     .collation({ locale: "en", strength: 2 })
     .sort({ name: 1 })
     .then((world) => {
@@ -64,9 +65,9 @@ module.exports.deleteWorld = (request, response) => {
 
 module.exports.findAllWorldsByUser = (req, res) => {
   if (req.jwtpayload !== req.params.username) {
-    User.findOne({ username: req.params.username })
+    User.findOne({ userName: req.params.userName })
       .then((userNotLoggedIn) => {
-        Game.find({ createdBy: userNotLoggedIn._id })
+        World.find({ createdBy: userNotLoggedIn._id })
           .then((allWorldsFromUser) => {
             console.log(allWorldsFromUser);
             res.json(allWorldsFromUser);
