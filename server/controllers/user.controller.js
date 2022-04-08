@@ -85,7 +85,7 @@ module.exports = {
   },
   logout: (req, res) => {
     console.log("Loggin out");
-    re.clearCookie("usertoken");
+    res.clearCookie("usertoken");
     res.json({
       message: "You have logged out",
     });

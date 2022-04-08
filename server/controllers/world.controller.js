@@ -68,6 +68,7 @@ module.exports.findAllWorldsByUser = (req, res) => {
     User.findOne({ userName: req.params.userName })
       .then((userNotLoggedIn) => {
         World.find({ createdBy: userNotLoggedIn._id })
+          .populate("createdBy", "userName")
           .then((allWorldsFromUser) => {
             console.log(allWorldsFromUser);
             res.json(allWorldsFromUser);
@@ -83,6 +84,7 @@ module.exports.findAllWorldsByUser = (req, res) => {
       });
   } else {
     World.find({ createdBy: req.jwtpayload.id })
+      .populate("createdBy", "userName")
       .then((allWorldsFromLoggedInUser) => {
         console.log(allWorldsFromLoggedInUser);
         res.json(allWorldsFromLoggedInUser);

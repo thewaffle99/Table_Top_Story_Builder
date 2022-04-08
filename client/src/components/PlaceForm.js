@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 
 function PlaceForm(props) {
   const { place, setPlace, submitHandler, errors, nameOfForm, navigateUrl } =
@@ -16,6 +17,7 @@ function PlaceForm(props) {
   return (
     <div className="mx-5">
       <form onSubmit={submitHandler}>
+        <NavBar />
         <div className="mb-5 d-flex flex-column align-items-center justify-content-center">
           <img
             style={{ width: "200px" }}

@@ -5,15 +5,18 @@ import { Card } from "react-bootstrap";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 
-function WorldsHome(props) {
-  const [worlds, setWorlds] = useState([]);
+function Profile(props) {
+  const [userWorldList, setUserWorldList] = useState([]);
+  const { userName } = useParams();
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/worlds`)
+      .get(`http://localhost:8000/api/worldsByUser/${userName}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res.data);
-        setWorlds(res.data);
+        setUserWorldList(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -24,8 +27,8 @@ function WorldsHome(props) {
       <NavBar />
       <div className="d-flex flex-column align-tiems-center justify-content-center">
         <div className="d-flex flex-column flex-wrap align-items-center justify-content-center ">
-          <h1>All Worlds</h1>
-          {worlds.map((world, index) => (
+          <h1>{userName}'s Worlds</h1>
+          {userWorldList.map((world, index) => (
             <div>
               <Card className="m-2">
                 <Card.Body
@@ -39,10 +42,7 @@ function WorldsHome(props) {
                     {world.name}
                   </Link>
                   <Card.Text>{world.worldBackStory}</Card.Text>
-                  <p>Created by: </p>
-                  <Link to={`/user/profile/${world.createdBy.userName}`}>
-                    {world.createdBy.userName}
-                  </Link>
+                  <p>Created by: {world.createdBy.userName}</p>
                 </Card.Body>
               </Card>
             </div>
@@ -60,4 +60,4 @@ function WorldsHome(props) {
   );
 }
 
-export default WorldsHome;
+export default Profile;

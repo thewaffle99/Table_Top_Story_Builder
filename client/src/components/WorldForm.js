@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 
 function WorldForm(props) {
   const { world, setWorld, submitHandler, errors, nameOfForm } = props;
@@ -16,6 +17,7 @@ function WorldForm(props) {
   return (
     <div className=" d-flex justify-content-around">
       <form onSubmit={submitHandler}>
+        <NavBar />
         <div className=" d-flex flex-column align-items-center justify-content-around">
           <div className="mb-5 d-flex flex-column align-items-center">
             <label>World Name:</label>

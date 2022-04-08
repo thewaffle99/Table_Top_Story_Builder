@@ -7,9 +7,9 @@ const LoginReg = (props) => {
   return (
     <div>
       <Header />
-      <div className="d-flex align-items-center justify-content-center mt-5">
-        <Login />
+      <div className="d-flex align-items-start justify-content-center mt-5">
         <Register />
+        <Login />
       </div>
     </div>
   );

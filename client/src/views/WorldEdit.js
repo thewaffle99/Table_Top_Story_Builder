@@ -62,7 +62,11 @@ function WorldEdit(props) {
             errors={errors}
             nameOfForm={nameOfForm}
           />
-          <DeleteButton id={updatedWorld._id} type={type} navigateUrl={"/"} />
+          <DeleteButton
+            id={updatedWorld._id}
+            type={type}
+            navigateUrl={"/home"}
+          />
         </div>
       </div>
       <div className="d-flex justify-content-center">

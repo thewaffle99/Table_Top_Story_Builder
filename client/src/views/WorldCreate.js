@@ -22,7 +22,9 @@ function WorldCreate(props) {
   const newSubmitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8000/api/worlds", newWorld)
+      .post("http://localhost:8000/api/worlds", newWorld, {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res);
         navigate("/home");

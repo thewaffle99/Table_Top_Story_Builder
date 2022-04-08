@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 
 function NPCForm(props) {
   const { NPC, setNPC, submitHandler, errors, nameOfForm, navigateUrl } = props;
@@ -15,6 +16,7 @@ function NPCForm(props) {
   return (
     <div>
       <form onSubmit={submitHandler}>
+        <NavBar />
         <div className="mb-3 d-flex flex-column align-items-center justify-content-center">
           <img
             style={{ width: "50px" }}
