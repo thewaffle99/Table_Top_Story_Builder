@@ -49,6 +49,7 @@ function PlaceCreate(props) {
         submitHandler={newSubmitHandler}
         errors={errors}
         nameOfForm={nameOfForm}
+        navigateUrl={`/api/edit/world/${newPlace.associatedWorld}`}
       />
     </div>
   );

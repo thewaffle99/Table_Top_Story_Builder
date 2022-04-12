@@ -17,9 +17,11 @@ function App() {
         className="App"
         style={{
           backgroundImage: `url(${backGround})`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "contain",
-          height: 1500,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          width: "100vw",
+          height: "100vh",
+          backgroundSize: "cover",
         }}
       >
         <Routes>

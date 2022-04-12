@@ -32,7 +32,7 @@ function NPCForm(props) {
                 onChange={onChangeHandler}
                 type="text"
               />
-              {/* {errors.name ? <p>{errors.name.message}</p> : null} */}
+              {errors.name ? <p>{errors.name.message}</p> : null}
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
               <label>Health:</label>
@@ -40,8 +40,9 @@ function NPCForm(props) {
                 name="health"
                 value={NPC.health}
                 onChange={onChangeHandler}
-                type="text"
+                type="number"
               />
+              {errors.health ? <p>{errors.health.message}</p> : null}
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
               <label>Attack:</label>
@@ -49,8 +50,9 @@ function NPCForm(props) {
                 name="attack"
                 value={NPC.attack}
                 onChange={onChangeHandler}
-                type="text"
+                type="number"
               />
+              {errors.attack ? <p>{errors.attack.message}</p> : null}
             </div>
           </div>
         </div>

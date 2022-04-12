@@ -22,12 +22,19 @@ function WorldsHome(props) {
     <div>
       <Header />
       <NavBar />
-      <div className="d-flex flex-column align-tiems-center justify-content-center">
-        <div className="d-flex flex-column flex-wrap align-items-center justify-content-center ">
-          <h1>All Worlds</h1>
+      <div className="d-flex flex-column align-items-center justify-content-center">
+        <h1>All Worlds</h1>
+        <Link
+          to={"/createWorld"}
+          className="m-5 btn btn-dark"
+          style={{ border: "3px", borderColor: "gold" }}
+        >
+          Create New World
+        </Link>
+        <div className="d-flex d-flex align-content-start flex-wrap">
           {worlds.map((world, index) => (
             <div>
-              <Card className="m-2">
+              <Card className="m-2 ">
                 <Card.Body
                   className="d-flex flex-column align-items-center justfy-content-around"
                   style={{ width: "500px" }}
@@ -39,21 +46,28 @@ function WorldsHome(props) {
                     {world.name}
                   </Link>
                   <Card.Text>{world.worldBackStory}</Card.Text>
-                  <p>Created by: </p>
-                  <Link to={`/user/profile/${world.createdBy.userName}`}>
+                  <p
+                    style={{
+                      fontFamily: "Lucida Console, CourierNew, monospaced",
+                    }}
+                  >
+                    Created by:
+                  </p>
+                  <Link
+                    className="list-group-item list-group-item-action"
+                    style={{
+                      textAlign: "center",
+                      border: "none",
+                      width: "250px",
+                    }}
+                    to={`/user/profile/${world.createdBy.userName}`}
+                  >
                     {world.createdBy.userName}
                   </Link>
                 </Card.Body>
               </Card>
             </div>
           ))}
-          <Link
-            to={"/createWorld"}
-            className="m-5 btn btn-dark"
-            style={{ border: "3px", borderColor: "gold" }}
-          >
-            Create New World
-          </Link>
         </div>
       </div>
     </div>

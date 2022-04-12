@@ -52,6 +52,8 @@ function NPCCreate(props) {
         setNPC={setNewNPC}
         submitHandler={newSubmitHandler}
         nameOfForm={nameOfForm}
+        navigateUrl={`/api/edit/world/${newNPC.associatedWorld}`}
+        errors={errors}
       />
     </div>
   );
