@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./NavBar";
 
 function WorldForm(props) {
   const { world, setWorld, submitHandler, errors, nameOfForm } = props;
@@ -15,13 +14,13 @@ function WorldForm(props) {
   };
 
   return (
-    <div className=" d-flex justify-content-around">
+    <div className=" mt-5 d-flex justify-content-around">
       <form onSubmit={submitHandler}>
-        <NavBar />
         <div className=" d-flex flex-column align-items-center justify-content-around">
           <div className="mb-5 d-flex flex-column align-items-center">
-            <label>World Name:</label>
+            <label className="headingTextStyle">World Name:</label>
             <input
+              className="oldTimeyTextStyle"
               name="name"
               value={world.name}
               onChange={onChangeHandler}
@@ -32,7 +31,10 @@ function WorldForm(props) {
           <div className="d-flex align-items-start">
             <div className="mx-5 d-flex flex-column align-items-center">
               <div className=" d-flex flex-column align-items-center">
-                <label style={{ height: "50px", width: "800px" }}>
+                <label
+                  className="headingTextStyle"
+                  style={{ height: "50px", width: "800px" }}
+                >
                   What is the backstory of this world..? Go as far back as
                   reasonable to set the stage. This is the foundation of your
                   story take your time. Have fun here! Are we in space? Are we
@@ -40,7 +42,7 @@ function WorldForm(props) {
                   magic common? How common is it?
                 </label>
                 <textarea
-                  className="my-5"
+                  className="my-5 oldTimeyTextStyle"
                   style={{ height: "150px", width: "800px" }}
                   name="worldBackStory"
                   value={world.worldBackStory}
@@ -51,13 +53,16 @@ function WorldForm(props) {
                 ) : null}
               </div>
               <div className="d-flex flex-column align-items-center">
-                <label style={{ height: "50px", width: "800px" }}>
+                <label
+                  className="headingTextStyle"
+                  style={{ height: "50px", width: "800px" }}
+                >
                   What is the catalyst that will get your characters on a common
                   goal? i.e. An evil doer is captured a princess, space clowns
                   are invading, they all suddenly are late to a party, etc.
                 </label>
                 <textarea
-                  className="my-5"
+                  className="my-5 oldTimeyTextStyle"
                   style={{ height: "150px", width: "800px" }}
                   name="worldCatalyst"
                   value={world.worldCatalyst}
@@ -70,13 +75,16 @@ function WorldForm(props) {
             </div>
             <div>
               <div className="d-flex flex-column align-items-center">
-                <label style={{ height: "50px", width: "500px" }}>
+                <label
+                  className="headingTextStyle"
+                  style={{ height: "50px", width: "500px" }}
+                >
                   Use this space to create Plot Points. As your team adventures
                   you will need to log the big plot points of their adventure to
                   keep track.
                 </label>
                 <textarea
-                  className="my-5"
+                  className="my-5 oldTimeyTextStyle"
                   style={{ height: "400px", width: "500px" }}
                   name="worldPlotPoints"
                   value={world.worldPlotPoints}

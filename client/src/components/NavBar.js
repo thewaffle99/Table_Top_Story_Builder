@@ -41,14 +41,27 @@ function NavBar(props) {
   };
 
   return (
-    <div className=" d-flex justify-content-between mx-5">
-      <Link className="mb-4 btn btn-dark" to={"/home"}>
+    <div className=" d-flex align-items-center justify-content-between mx-5">
+      <Link
+        className="mx-3 btn btn-dark"
+        style={{ border: "3px", borderColor: "gold" }}
+        to={"/home"}
+      >
         Home
       </Link>
-      <Link className="mb-4 btn btn-dark" to={`/user/profile/${user.userName}`}>
+      <Link
+        className="mx-1 btn btn-dark"
+        style={{ border: "3px", borderColor: "#es6b800" }}
+        to={`/user/profile/${user.userName}`}
+      >
         {user.userName} Profile
       </Link>
-      <button className="mb-4 btn btn-dark" onClick={logout}>
+
+      <button
+        className="mx-3 btn btn-dark"
+        style={{ border: "3px", borderColor: "gold" }}
+        onClick={logout}
+      >
         Logout
       </button>
     </div>

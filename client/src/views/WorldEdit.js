@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import WorldForm from "../components/WorldForm";
 import Header from "../components/Header";
 import DeleteButton from "../components/DeleteButton";
+import NavBar from "../components/NavBar";
 
 function WorldEdit(props) {
   const navigate = useNavigate();
@@ -51,9 +52,14 @@ function WorldEdit(props) {
 
   return (
     <div>
-      <Header />
-
-      <div className="mb-5 d-flex justify-content-center align-items-center">
+      <div
+        style={{ marginBottom: "-75px" }}
+        className="d-flex justify-content-between"
+      >
+        <Header />
+        <NavBar />
+      </div>
+      <div className="my-5 d-flex justify-content-center align-items-center">
         <div>
           <WorldForm
             world={updatedWorld}
@@ -68,56 +74,65 @@ function WorldEdit(props) {
             navigateUrl={"/home"}
           />
         </div>
-      </div>
-      <div className="d-flex justify-content-center">
-        <div className="m-3 d-flex flex-column align-items-center ">
-          <h2>Places:</h2>
-          <Link
-            className="btn btn-dark"
-            to={`/createPlace/${updatedWorld._id}`}
-          >
-            Create Place
-          </Link>
-          {placeList
-            ? placeList.map((place, index) => (
-                <Link
-                  style={{
-                    margin: "2px",
-                    padding: "5px",
-                    color: "black",
-                    backgroundColor: "grey",
-                    fontSize: "20px",
-                  }}
-                  to={`/api/edit/place/${place._id}`}
-                  key={index}
-                >
-                  {place.name}
-                </Link>
-              ))
-            : null}
-        </div>
-        <div className="m-3 d-flex flex-column align-items-center ">
-          <h2>NPCs:</h2>
-          <Link className="btn btn-dark" to={`/createNPC/${updatedWorld._id}`}>
-            Create NPC
-          </Link>
-          {NPCList
-            ? NPCList.map((NPC, index) => (
-                <Link
-                  style={{
-                    margin: "2px",
-                    padding: "5px",
-                    color: "black",
-                    backgroundColor: "grey",
-                    fontSize: "20px",
-                  }}
-                  to={`/api/edit/npc/${NPC._id}`}
-                  key={index}
-                >
-                  {NPC.name}
-                </Link>
-              ))
-            : null}
+        <div>
+          <div className="d-flex justify-content-center">
+            <div className="m-3 d-flex flex-column align-items-center ">
+              <h2 className="headingTextStyle">Places:</h2>
+              <Link
+                className=" my-2 btn btn-dark"
+                to={`/createPlace/${updatedWorld._id}`}
+              >
+                Create Place
+              </Link>
+              {placeList
+                ? placeList.map((place, index) => (
+                    <Link
+                      className="oldTimeyTextStyle"
+                      style={{
+                        margin: "2px",
+                        padding: "10px",
+                        color: "black",
+                        backgroundColor: "grey",
+                        fontSize: "20px",
+                        borderRadius: "100px",
+                      }}
+                      to={`/api/edit/place/${place._id}`}
+                      key={index}
+                    >
+                      {place.name}
+                    </Link>
+                  ))
+                : null}
+            </div>
+            <div className="m-3 d-flex flex-column align-items-center ">
+              <h2 className="headingTextStyle">NPCs:</h2>
+              <Link
+                className="my-2 btn btn-dark"
+                to={`/createNPC/${updatedWorld._id}`}
+              >
+                Create NPC
+              </Link>
+              {NPCList
+                ? NPCList.map((NPC, index) => (
+                    <Link
+                      className="oldTimeyTextStyle"
+                      style={{
+                        margin: "2px",
+                        padding: "10px",
+                        color: "black",
+                        backgroundColor: "grey",
+                        fontSize: "20px",
+                        borderRadius: "100px",
+                      }}
+                      to={`/api/edit/npc/${NPC._id}`}
+                      key={index}
+                    >
+                      {NPC.name}
+                    </Link>
+                  ))
+                : null}
+            </div>
+          </div>
         </div>
       </div>
     </div>

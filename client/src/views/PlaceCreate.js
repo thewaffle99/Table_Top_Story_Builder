@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import PlaceForm from "../components/PlaceForm";
 import Header from "../components/Header";
+import NavBar from "../components/NavBar";
 
 function PlaceCreate(props) {
   const { id } = useParams();
@@ -40,8 +41,13 @@ function PlaceCreate(props) {
 
   return (
     <div>
-      <Header />
-
+      <div
+        style={{ marginBottom: "-75px" }}
+        className="d-flex justify-content-between"
+      >
+        <Header />
+        <NavBar />
+      </div>{" "}
       <PlaceForm
         worldId={id}
         place={newPlace}

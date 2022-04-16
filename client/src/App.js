@@ -9,7 +9,7 @@ import NPCEdit from "./views/NPCEdit";
 import "bootstrap/dist/css/bootstrap.min.css";
 import WorldsHome from "./views/WorldsHome";
 import LoginReg from "./views/LoginReg";
-import Profile from "./components/Profile";
+import Profile from "./views/Profile";
 function App() {
   return (
     <BrowserRouter>
@@ -18,7 +18,7 @@ function App() {
         style={{
           backgroundImage: `url(${backGround})`,
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          backgroundRepeat: "repeat-y",
           width: "100vw",
           height: "100vh",
           backgroundSize: "cover",

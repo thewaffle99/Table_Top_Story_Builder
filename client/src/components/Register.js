@@ -50,14 +50,15 @@ const Register = (props) => {
   return (
     <div className="d-flex flex-column align-items-center mx-5">
       {confirmReg ? <h4 style={{ color: "green" }}>{confirmReg}</h4> : null}
-      <h1>Register</h1>
+      <h1 className="headingTextStyle">Register</h1>
       <form
         onSubmit={register}
         className="d-flex flex-column align-items-center"
       >
         <div className="d-flex flex-column align-items-center">
-          <label>User Name</label>
+          <label className="headingTextStyle">User Name</label>
           <input
+            className="oldTimeyTextStyle"
             type="text"
             name="userName"
             value={user.userName}
@@ -65,8 +66,9 @@ const Register = (props) => {
           ></input>
         </div>
         <div className="d-flex flex-column align-items-center">
-          <label>First Name</label>
+          <label className="headingTextStyle">First Name</label>
           <input
+            className="oldTimeyTextStyle"
             type="text"
             name="firstName"
             value={user.firstName}
@@ -74,8 +76,9 @@ const Register = (props) => {
           ></input>
         </div>
         <div className="d-flex flex-column align-items-center">
-          <label>Last Name</label>
+          <label className="headingTextStyle">Last Name</label>
           <input
+            className="oldTimeyTextStyle"
             type="text"
             name="lastName"
             value={user.lastName}
@@ -83,8 +86,9 @@ const Register = (props) => {
           ></input>
         </div>
         <div className="d-flex flex-column align-items-center">
-          <label>Email</label>
+          <label className="headingTextStyle">Email</label>
           <input
+            className="oldTimeyTextStyle"
             type="text"
             name="email"
             value={user.email}
@@ -92,8 +96,9 @@ const Register = (props) => {
           ></input>
         </div>
         <div className="d-flex flex-column align-items-center">
-          <label>Password</label>
+          <label className="headingTextStyle">Password</label>
           <input
+            className="oldTimeyTextStyle"
             type="password"
             name="password"
             value={user.password}
@@ -101,8 +106,9 @@ const Register = (props) => {
           ></input>
         </div>
         <div className="d-flex flex-column align-items-center">
-          <label> Confirm Password</label>
+          <label className="headingTextStyle"> Confirm Password</label>
           <input
+            className="oldTimeyTextStyle"
             type="password"
             name="confirmPassword"
             value={user.confirmPassword}

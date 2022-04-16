@@ -1,5 +1,6 @@
 import React from "react";
 import title from "./imgs/title.png";
+import NavBar from "./NavBar";
 
 function Header() {
   return (

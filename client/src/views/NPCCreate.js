@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import NPCForm from "../components/NPCForm";
 import Header from "../components/Header";
+import NavBar from "../components/NavBar";
 
 function NPCCreate(props) {
   const { id } = useParams();
@@ -46,7 +47,13 @@ function NPCCreate(props) {
 
   return (
     <div>
-      <Header />
+      <div
+        style={{ marginBottom: "-75px" }}
+        className="d-flex justify-content-between"
+      >
+        <Header />
+        <NavBar />
+      </div>
       <NPCForm
         NPC={newNPC}
         setNPC={setNewNPC}

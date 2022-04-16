@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import WorldForm from "../components/WorldForm";
 import Header from "../components/Header";
+import NavBar from "../components/NavBar";
 
 function WorldCreate(props) {
   const [errors, setErrors] = useState({});
@@ -37,7 +38,13 @@ function WorldCreate(props) {
 
   return (
     <div>
-      <Header />
+      <div
+        style={{ marginBottom: "-75px" }}
+        className="d-flex justify-content-between"
+      >
+        <Header />
+        <NavBar />
+      </div>
       <WorldForm
         world={newWorld}
         setWorld={setNewWorld}

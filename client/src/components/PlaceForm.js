@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./NavBar";
 
 function PlaceForm(props) {
   const { place, setPlace, submitHandler, errors, nameOfForm, navigateUrl } =
@@ -15,17 +14,17 @@ function PlaceForm(props) {
     setPlace(newStateObject);
   };
   return (
-    <div className="mx-5">
+    <div className="m-5">
       <form onSubmit={submitHandler}>
-        <NavBar />
         <div className="mb-5 d-flex flex-column align-items-center justify-content-center">
           <img
             style={{ width: "200px" }}
             className="d-flex flex-column align-items-center justify-content-center"
             src={place.photo}
           />
-          <label>Place Name:</label>
+          <label className="headingTextStyle">Place Name:</label>
           <input
+            className="oldTimeyTextStyle"
             name="name"
             value={place.name}
             onChange={onChangeHandler}
@@ -35,28 +34,39 @@ function PlaceForm(props) {
         </div>
         <div className="d-flex align-items-start justify-content-center">
           <div className=" d-flex flex-column align-items-center justify-content-center">
-            <label>Who are their enemies? Why?</label>
+            <label className="headingTextStyle">
+              Who are their enemies? Why?
+            </label>
             <textarea
+              className="oldTimeyTextStyle"
               style={{ height: "100px", width: "300px" }}
               name="enemies"
               value={place.enemies}
               onChange={onChangeHandler}
               type="text"
             />
-            <label style={{ width: "300px", textAlign: "center" }}>
+            <label
+              className="headingTextStyle"
+              style={{ width: "300px", textAlign: "center" }}
+            >
               Who are their allies? Why?
             </label>
             <textarea
+              className="oldTimeyTextStyle"
               style={{ height: "100px", width: "300px" }}
               name="allies"
               value={place.allies}
               onChange={onChangeHandler}
               type="text"
             />
-            <label style={{ width: "300px", textAlign: "center" }}>
+            <label
+              className="headingTextStyle"
+              style={{ width: "300px", textAlign: "center" }}
+            >
               What what makes this place unique? Is it a city, town, forrest...?
             </label>
             <textarea
+              className="oldTimeyTextStyle"
               style={{ height: "100px", width: "300px" }}
               name="uniqueFeatures"
               value={place.uniqueFeatures}
@@ -65,30 +75,36 @@ function PlaceForm(props) {
             />
           </div>
           <div className="mx-5 d-flex flex-column align-items-center justify-content-center">
-            <label style={{ textAlign: "center" }}>
+            <label className="headingTextStyle" style={{ textAlign: "center" }}>
               Who would they be suprised to see?
             </label>
             <textarea
+              className="oldTimeyTextStyle"
               style={{ height: "100px", width: "300px" }}
               name="suprisedToSeeWho"
               value={place.suprisedToSeeWho}
               onChange={onChangeHandler}
               type="text"
             />
-            <label style={{ textAlign: "center" }}>
+            <label className="headingTextStyle" style={{ textAlign: "center" }}>
               What would they be suprised to see?
             </label>
             <textarea
-              style={{ height: "100px", width: "300px", textAlign: "center" }}
+              className="oldTimeyTextStyle"
+              style={{ height: "100px", width: "300px" }}
               name="suprisedToSeeWhat"
               value={place.suprisedToSeeWhat}
               onChange={onChangeHandler}
               type="text"
             />
-            <label style={{ width: "300px", textAlign: "center" }}>
+            <label
+              className="headingTextStyle"
+              style={{ width: "300px", textAlign: "center" }}
+            >
               Does this place have any prejudices?
             </label>
             <textarea
+              className="oldTimeyTextStyle"
               style={{ height: "100px", width: "300px" }}
               name="prejudices"
               value={place.prejudices}
@@ -97,26 +113,30 @@ function PlaceForm(props) {
             />
           </div>
           <div className="mx-3 d-flex flex-column justify-content-center align-items-center">
-            <label style={{ width: "300px", textAlign: "center" }}>
+            <label
+              className="headingTextStyle"
+              style={{ width: "300px", textAlign: "center" }}
+            >
               Place Notes
             </label>
             <textarea
+              className="oldTimeyTextStyle"
               style={{ height: "300px", width: "400px" }}
               name="placeNotes"
               value={place.placeNotes}
               onChange={onChangeHandler}
               type="text"
             />
-          </div>
-          <div className="mx-3 d-flex flex-column justify-content-center align-items-center">
-            <label>Image:</label>
+            <label className="mt-5 headingTextStyle">Image:</label>
             <input
+              className="oldTimeyTextStyle"
               name="photo"
               value={place.photo}
               onChange={onChangeHandler}
               type="text"
             />
           </div>
+          <div className="mx-3 d-flex flex-column justify-content-center align-items-center"></div>
         </div>
         <div className="d-flex justify-content-center">
           <Link className=" mx-5 btn btn-secondary" to={navigateUrl}>

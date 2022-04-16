@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import NPCForm from "../components/NPCForm";
 import DeleteButton from "../components/DeleteButton";
+import NavBar from "../components/NavBar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -55,7 +56,14 @@ function NPCEdit() {
 
   return (
     <div>
-      <Header />
+      <div
+        style={{ marginBottom: "-75px" }}
+        className="d-flex justify-content-between"
+      >
+        <Header />
+        <NavBar />
+      </div>
+
       <NPCForm
         NPC={updatedNPC}
         setNPC={setUpdatedNPC}

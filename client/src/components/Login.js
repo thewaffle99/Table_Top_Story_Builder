@@ -41,12 +41,13 @@ const Login = (props) => {
 
   return (
     <div className="d-flex flex-column align-items-center mx-5">
-      <h1>Login</h1>
+      <h1 className="headingTextStyle">Login</h1>
       <p className="danger">{errorMessage ? errorMessage : ""}</p>
       <form onSubmit={login} className="d-flex flex-column align-items-center">
         <div className="d-flex flex-column align-items-center">
-          <label>Email</label>
+          <label className="headingTextStyle">Email</label>
           <input
+            className="oldTimeyTextStyle"
             type="text"
             name="email"
             value={user.email}
@@ -54,8 +55,9 @@ const Login = (props) => {
           ></input>
         </div>
         <div className="d-flex flex-column align-items-center">
-          <label>Password</label>
+          <label className="headingTextStyle">Password</label>
           <input
+            className="oldTimeyTextStyle"
             type="password"
             name="password"
             value={user.password}

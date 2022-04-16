@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./NavBar";
 
 function NPCForm(props) {
   const { NPC, setNPC, submitHandler, errors, nameOfForm, navigateUrl } = props;
@@ -14,9 +13,8 @@ function NPCForm(props) {
     setNPC(newStateObject);
   };
   return (
-    <div>
+    <div className="m-5">
       <form onSubmit={submitHandler}>
-        <NavBar />
         <div className="mb-3 d-flex flex-column align-items-center justify-content-center">
           <img
             style={{ width: "50px" }}
@@ -25,8 +23,9 @@ function NPCForm(props) {
           />
           <div className="d-flex">
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <label>NPC Name:</label>
+              <label className="headingTextStyle">NPC Name:</label>
               <input
+                className="oldTimeyTextStyle"
                 name="name"
                 value={NPC.name}
                 onChange={onChangeHandler}
@@ -35,8 +34,9 @@ function NPCForm(props) {
               {errors.name ? <p>{errors.name.message}</p> : null}
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <label>Health:</label>
+              <label className="headingTextStyle">Health:</label>
               <input
+                className="oldTimeyTextStyle"
                 name="health"
                 value={NPC.health}
                 onChange={onChangeHandler}
@@ -45,8 +45,9 @@ function NPCForm(props) {
               {errors.health ? <p>{errors.health.message}</p> : null}
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <label>Attack:</label>
+              <label className="headingTextStyle">Attack:</label>
               <input
+                className="oldTimeyTextStyle"
                 name="attack"
                 value={NPC.attack}
                 onChange={onChangeHandler}
@@ -58,18 +59,23 @@ function NPCForm(props) {
         </div>
         <div className=" d-flex justify-content-center align-items-center">
           <div className="mx-3 d-flex flex-column align-items-center justify-content-center">
-            <label>Occupation:</label>
+            <label className="headingTextStyle">Occupation:</label>
             <input
+              className="oldTimeyTextStyle"
               name="occupation"
               value={NPC.occupation}
               onChange={onChangeHandler}
               type="text"
             />
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <label style={{ textAlign: "center", width: "300px" }}>
+              <label
+                className="headingTextStyle"
+                style={{ textAlign: "center", width: "300px" }}
+              >
                 What is something they want?
               </label>
               <textarea
+                className="oldTimeyTextStyle"
                 style={{ height: "100px", width: "300px" }}
                 name="want"
                 value={NPC.want}
@@ -78,10 +84,14 @@ function NPCForm(props) {
               />
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <label style={{ textAlign: "center", width: "300px" }}>
+              <label
+                className="headingTextStyle"
+                style={{ textAlign: "center", width: "300px" }}
+              >
                 What is some information they know?
               </label>
               <textarea
+                className="oldTimeyTextStyle"
                 style={{ height: "100px", width: "300px" }}
                 name="infoTheyKnow"
                 value={NPC.infoTheyKnow}
@@ -90,7 +100,10 @@ function NPCForm(props) {
               />
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <label style={{ textAlign: "center", width: "300px" }}>
+              <label
+                className="headingTextStyle"
+                style={{ textAlign: "center", width: "300px" }}
+              >
                 Do they have enemies?
               </label>
               <textarea
@@ -102,10 +115,14 @@ function NPCForm(props) {
               />
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <label style={{ textAlign: "center", width: "300px" }}>
+              <label
+                className="headingTextStyle"
+                style={{ textAlign: "center", width: "300px" }}
+              >
                 Do they have allies?
               </label>
               <textarea
+                className="oldTimeyTextStyle"
                 style={{ height: "100px", width: "300px" }}
                 name="allies"
                 value={NPC.allies}
@@ -116,10 +133,14 @@ function NPCForm(props) {
           </div>
           <div className="d-flex flex-column justify-content-center align-items-center">
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <label style={{ textAlign: "center", width: "300px" }}>
+              <label
+                className="headingTextStyle"
+                style={{ textAlign: "center", width: "300px" }}
+              >
                 Do they have any unique physical characteristics?
               </label>
               <textarea
+                className="oldTimeyTextStyle"
                 style={{ height: "100px", width: "300px" }}
                 name="PhysicalChar"
                 value={NPC.PhysicalChar}
@@ -128,10 +149,14 @@ function NPCForm(props) {
               />
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <label style={{ textAlign: "center", width: "300px" }}>
+              <label
+                className="headingTextStyle"
+                style={{ textAlign: "center", width: "300px" }}
+              >
                 What is their a character flaw or an ideal they hold dearly?
               </label>
               <textarea
+                className="oldTimeyTextStyle"
                 style={{ height: "100px", width: "300px" }}
                 name="flawOrIdeal"
                 value={NPC.flawOrIdeal}
@@ -140,10 +165,14 @@ function NPCForm(props) {
               />
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <label style={{ textAlign: "center", width: "300px" }}>
+              <label
+                className="headingTextStyle"
+                style={{ textAlign: "center", width: "300px" }}
+              >
                 Do they have any valuables?
               </label>
               <textarea
+                className="oldTimeyTextStyle"
                 style={{ height: "100px", width: "300px" }}
                 name="valuables"
                 value={NPC.valuables}
@@ -152,10 +181,14 @@ function NPCForm(props) {
               />
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <label style={{ textAlign: "center", width: "300px" }}>
+              <label
+                className="headingTextStyle"
+                style={{ textAlign: "center", width: "300px" }}
+              >
                 Do they have any juicy secrets?
               </label>
               <textarea
+                className="oldTimeyTextStyle"
                 style={{ height: "100px", width: "300px" }}
                 name="secrets"
                 value={NPC.secrets}
@@ -166,26 +199,30 @@ function NPCForm(props) {
           </div>
 
           <div className="mx-3 d-flex flex-column justify-content-center align-items-center">
-            <label style={{ width: "300px", textAlign: "center" }}>
+            <label
+              className="headingTextStyle"
+              style={{ width: "300px", textAlign: "center" }}
+            >
               NPC Notes
             </label>
             <textarea
+              className="oldTimeyTextStyle"
               style={{ height: "300px", width: "400px" }}
               name="NPCNotes"
               value={NPC.NPCNotes}
               onChange={onChangeHandler}
               type="text"
             />
-          </div>
-          <div className="mx-3 d-flex flex-column justify-content-center align-items-center">
-            <label>Image:</label>
+            <label className="mt-5 headingTextStyle">Image:</label>
             <input
+              className="oldTimeyTextStyle"
               name="photo"
               value={NPC.photo}
               onChange={onChangeHandler}
               type="text"
             />
           </div>
+          <div className="mx-3 d-flex flex-column justify-content-center align-items-center"></div>
         </div>
         <div className="mt-3 d-flex justify-content-center">
           <Link className=" mx-5 btn btn-secondary" to={navigateUrl}>

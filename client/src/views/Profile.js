@@ -23,17 +23,29 @@ function Profile(props) {
 
   return (
     <div>
-      <Header />
-      <NavBar />
-      <div className="d-flex flex-column align-tiems-center justify-content-center">
-        <div className="d-flex flex-column flex-wrap align-items-center justify-content-center ">
-          <h1>{userName}'s Worlds</h1>
+      <div
+        style={{ marginBottom: "-75px" }}
+        className="d-flex justify-content-between"
+      >
+        <Header />
+        <NavBar />
+      </div>
+      <div className="d-flex flex-column align-items-center justify-content-center">
+        <h1 className="headingTextStyle">{userName}'s Worlds</h1>
+        <Link
+          to={"/createWorld"}
+          className="m-3 btn btn-dark"
+          style={{ border: "3px", borderColor: "gold" }}
+        >
+          Create New World
+        </Link>
+        <div className="oldTimeyTextStyle d-flex flex-column flex-wrap align-items-center justify-content-center ">
           {userWorldList.map((world, index) => (
-            <div>
-              <Card className="m-2">
-                <Card.Body
+            <div className="m-2 card shadow ">
+              <div className="m-2 ">
+                <div
                   className="d-flex flex-column align-items-center justfy-content-around"
-                  style={{ width: "500px" }}
+                  style={{ width: "500px", padding: "10px" }}
                 >
                   <Link
                     className="mb-4 btn btn-secondary"
@@ -43,17 +55,10 @@ function Profile(props) {
                   </Link>
                   <Card.Text>{world.worldBackStory}</Card.Text>
                   <p>Created by: {world.createdBy.userName}</p>
-                </Card.Body>
-              </Card>
+                </div>
+              </div>
             </div>
           ))}
-          <Link
-            to={"/createWorld"}
-            className="m-5 btn btn-dark"
-            style={{ border: "3px", borderColor: "gold" }}
-          >
-            Create New World
-          </Link>
         </div>
       </div>
     </div>
