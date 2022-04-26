@@ -27,7 +27,6 @@ function NPCEdit() {
     secret: "",
     NPCNotes: "",
     photo: "",
-    // place: "",
   });
 
   useEffect(() => {
@@ -65,16 +64,12 @@ function NPCEdit() {
       </div>
 
       <NPCForm
+        type={type}
         NPC={updatedNPC}
         setNPC={setUpdatedNPC}
         submitHandler={updateSubmitHandlerNPC}
         errors={errors}
         nameOfForm={nameOfForm}
-        navigateUrl={`/api/edit/world/${updatedNPC.associatedWorld}`}
-      />
-      <DeleteButton
-        id={updatedNPC._id}
-        type={type}
         navigateUrl={`/api/edit/world/${updatedNPC.associatedWorld}`}
       />
     </div>

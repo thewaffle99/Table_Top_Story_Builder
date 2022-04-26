@@ -1,6 +1,6 @@
 const NPC = require("../models/npc.model");
-const Place = require("../models/place.model");
 const World = require("../models/world.model");
+const Place = require("../models/place.model");
 
 module.exports.createNPC = (request, response) => {
   NPC.create(request.body)

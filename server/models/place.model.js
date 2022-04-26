@@ -35,6 +35,10 @@ const PlaceSchema = new mongoose.Schema(
       ref: "World",
       required: [true],
     },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
     // NPCs: [
     //   {
     //     type: mongoose.Schema.Types.ObjectId,

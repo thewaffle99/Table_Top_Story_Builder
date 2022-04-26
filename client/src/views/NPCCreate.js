@@ -9,6 +9,7 @@ function NPCCreate(props) {
   const { id } = useParams();
   const [errors, setErrors] = useState({});
   const nameOfForm = "Create";
+  const type = "NPC";
 
   const navigate = useNavigate();
 
@@ -27,7 +28,6 @@ function NPCCreate(props) {
     secret: "",
     NPCNotes: "",
     photo: "",
-    // place: "",
     associatedWorld: `${id}`,
   });
 
@@ -55,6 +55,7 @@ function NPCCreate(props) {
         <NavBar />
       </div>
       <NPCForm
+        type={type}
         NPC={newNPC}
         setNPC={setNewNPC}
         submitHandler={newSubmitHandler}

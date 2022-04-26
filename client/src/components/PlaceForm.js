@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import DeleteButton from "./DeleteButton";
 
 function PlaceForm(props) {
-  const { place, setPlace, submitHandler, errors, nameOfForm, navigateUrl } =
-    props;
+  const {
+    type,
+    place,
+    setPlace,
+    submitHandler,
+    errors,
+    nameOfForm,
+    navigateUrl,
+  } = props;
+  const [user, setUser] = useState({});
+  const [world, setWorld] = useState({});
 
   const onChangeHandler = (e) => {
     const newStateObject = { ...place };
@@ -12,6 +23,52 @@ function PlaceForm(props) {
     console.log("e.target.name = ", e.target.name);
     console.log("e.target.value = ", e.target.value);
     setPlace(newStateObject);
+  };
+  useEffect(
+    () =>
+      axios
+        .get("http://localhost:8000/api/users/secure", {
+          withCredentials: true,
+        })
+        .then((res) => {
+          console.log(res.data);
+          setUser(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        }),
+    []
+  );
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/world/${place.associatedWorld}`)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        setWorld(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [place.associatedWorld]);
+
+  let loggedInPlace = (user, world) => {
+    console.log(world);
+    console.log(user);
+    if (user._id === world.createdBy) {
+      return (
+        <div className="d-flex">
+          <button type="submit" className=" btn btn-dark">
+            {nameOfForm} Place
+          </button>
+          <DeleteButton
+            id={place._id}
+            type={type}
+            navigateUrl={`/api/edit/world/${place.associatedWorld}`}
+          />
+        </div>
+      );
+    } else {
+      return null;
+    }
   };
   return (
     <div className="m-5">
@@ -142,9 +199,7 @@ function PlaceForm(props) {
           <Link className=" mx-5 btn btn-secondary" to={navigateUrl}>
             Back
           </Link>
-          <button type="submit" className=" btn btn-dark">
-            {nameOfForm} Place
-          </button>
+          <div>{loggedInPlace(user, world)}</div>
         </div>
       </form>
     </div>

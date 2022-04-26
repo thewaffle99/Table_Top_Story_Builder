@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import DeleteButton from "./DeleteButton";
 
 function NPCForm(props) {
-  const { NPC, setNPC, submitHandler, errors, nameOfForm, navigateUrl } = props;
-
+  const { type, NPC, setNPC, submitHandler, errors, nameOfForm, navigateUrl } =
+    props;
+  const [user, setUser] = useState({});
+  const [world, setWorld] = useState({});
+  console.log(NPC);
   const onChangeHandler = (e) => {
     const newStateObject = { ...NPC };
     newStateObject[e.target.name] = e.target.value;
@@ -12,6 +17,55 @@ function NPCForm(props) {
     console.log("e.target.value = ", e.target.value);
     setNPC(newStateObject);
   };
+
+  useEffect(
+    () =>
+      axios
+        .get("http://localhost:8000/api/users/secure", {
+          withCredentials: true,
+        })
+        .then((res) => {
+          console.log(res.data);
+          setUser(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        }),
+    []
+  );
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/world/${NPC.associatedWorld}`)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        setWorld(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [NPC.associatedWorld]);
+
+  let loggedInNPC = (user, world) => {
+    console.log(user);
+    console.log(world);
+    if (user._id === world.createdBy) {
+      return (
+        <div className="d-flex">
+          <button type="submit" className=" btn btn-dark">
+            {nameOfForm} NPC
+          </button>
+          <DeleteButton
+            id={NPC._id}
+            type={type}
+            navigateUrl={`/api/edit/world/${NPC.associatedWorld}`}
+          />
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
+
   return (
     <div className="m-5">
       <form onSubmit={submitHandler}>
@@ -228,9 +282,7 @@ function NPCForm(props) {
           <Link className=" mx-5 btn btn-secondary" to={navigateUrl}>
             Back
           </Link>
-          <button type="submit" className=" btn btn-dark">
-            {nameOfForm} NPC
-          </button>
+          <div>{loggedInNPC(user, world)}</div>
         </div>
       </form>
     </div>

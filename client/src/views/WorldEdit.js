@@ -10,6 +10,7 @@ function WorldEdit(props) {
   const navigate = useNavigate();
   const nameOfForm = "Update";
   const type = "world";
+  const [user, setUser] = useState({});
 
   const { id } = useParams();
   const [errors, setErrors] = useState({});
@@ -36,6 +37,22 @@ function WorldEdit(props) {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(
+    () =>
+      axios
+        .get("http://localhost:8000/api/users/secure", {
+          withCredentials: true,
+        })
+        .then((res) => {
+          console.log(res.data);
+          setUser(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        }),
+    []
+  );
+
   const updateSubmitHandlerWorld = (e) => {
     e.preventDefault();
     axios
@@ -50,6 +67,36 @@ function WorldEdit(props) {
       });
   };
 
+  let loggedInPlace = (user, updatedWorld) => {
+    if (user._id === updatedWorld.createdBy) {
+      return (
+        <Link
+          className=" my-2 btn btn-dark"
+          to={`/createPlace/${updatedWorld._id}`}
+        >
+          Create Place
+        </Link>
+      );
+    } else {
+      return null;
+    }
+  };
+
+  let loggedInNPC = (user, updatedWorld) => {
+    if (user._id === updatedWorld.createdBy) {
+      return (
+        <Link
+          className="my-2 btn btn-dark"
+          to={`/createNPC/${updatedWorld._id}`}
+        >
+          Create NPC
+        </Link>
+      );
+    } else {
+      return null;
+    }
+  };
+
   return (
     <div>
       <div
@@ -62,28 +109,21 @@ function WorldEdit(props) {
       <div className="my-5 d-flex justify-content-center align-items-center">
         <div>
           <WorldForm
+            user={user}
             world={updatedWorld}
             setWorld={setUpdatedWorld}
             submitHandler={updateSubmitHandlerWorld}
             errors={errors}
             nameOfForm={nameOfForm}
-          />
-          <DeleteButton
-            id={updatedWorld._id}
             type={type}
-            navigateUrl={"/home"}
           />
         </div>
         <div>
           <div className="d-flex justify-content-center">
             <div className="m-3 d-flex flex-column align-items-center ">
               <h2 className="headingTextStyle">Places:</h2>
-              <Link
-                className=" my-2 btn btn-dark"
-                to={`/createPlace/${updatedWorld._id}`}
-              >
-                Create Place
-              </Link>
+              <div>{loggedInPlace(user, updatedWorld)}</div>
+
               {placeList
                 ? placeList.map((place, index) => (
                     <Link
@@ -106,12 +146,8 @@ function WorldEdit(props) {
             </div>
             <div className="m-3 d-flex flex-column align-items-center ">
               <h2 className="headingTextStyle">NPCs:</h2>
-              <Link
-                className="my-2 btn btn-dark"
-                to={`/createNPC/${updatedWorld._id}`}
-              >
-                Create NPC
-              </Link>
+              <div>{loggedInNPC(user, updatedWorld)}</div>
+
               {NPCList
                 ? NPCList.map((NPC, index) => (
                     <Link

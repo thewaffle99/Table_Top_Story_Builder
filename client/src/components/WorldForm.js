@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import DeleteButton from "./DeleteButton";
 function WorldForm(props) {
-  const { world, setWorld, submitHandler, errors, nameOfForm } = props;
+  const { user, type, world, setWorld, submitHandler, errors, nameOfForm } =
+    props;
 
   const onChangeHandler = (e) => {
     const newStateObject = { ...world };
@@ -11,6 +12,21 @@ function WorldForm(props) {
     console.log("e.target.name = ", e.target.name);
     console.log("e.target.value = ", e.target.value);
     setWorld(newStateObject);
+  };
+  let loggedInWorld = (user, world) => {
+    console.log(world);
+    if (user._id === world.createdBy) {
+      return (
+        <div className="d-flex">
+          <button type="submit" className=" btn btn-dark">
+            {nameOfForm} World
+          </button>
+          <DeleteButton id={world._id} type={type} navigateUrl={"/home"} />
+        </div>
+      );
+    } else {
+      return null;
+    }
   };
 
   return (
@@ -93,13 +109,18 @@ function WorldForm(props) {
               </div>
             </div>
           </div>
-          <div>
+          <div className="d-flex ">
             <Link className=" mx-5 btn btn-secondary" to="/home">
               Back
             </Link>
-            <button type="submit" className=" btn btn-dark">
-              {nameOfForm} World
-            </button>
+
+            {nameOfForm === "Create" ? (
+              <button type="submit" className=" btn btn-dark">
+                {nameOfForm} World
+              </button>
+            ) : (
+              <div>{loggedInWorld(user, world)}</div>
+            )}
           </div>
         </div>
       </form>

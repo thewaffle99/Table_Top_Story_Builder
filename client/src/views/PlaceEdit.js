@@ -58,16 +58,12 @@ function PlaceEdit(props) {
         <NavBar />
       </div>
       <PlaceForm
+        type={type}
         place={updatedPlace}
         setPlace={setUpdatedPlace}
         submitHandler={updateSubmitHandlerPlace}
         errors={errors}
         nameOfForm={nameOfForm}
-        navigateUrl={`/api/edit/world/${updatedPlace.associatedWorld}`}
-      />
-      <DeleteButton
-        id={updatedPlace._id}
-        type={type}
         navigateUrl={`/api/edit/world/${updatedPlace.associatedWorld}`}
       />
     </div>

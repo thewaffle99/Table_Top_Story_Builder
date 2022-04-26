@@ -17,7 +17,7 @@ function DeleteButton(props) {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="mx-5" style={{ marginTop: "-30px" }}>
+    <div className="mx-5">
       <button onClick={deleteHandler} className="btn btn-danger">
         Delete
       </button>

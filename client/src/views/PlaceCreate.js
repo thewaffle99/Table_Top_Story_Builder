@@ -9,6 +9,7 @@ function PlaceCreate(props) {
   const { id } = useParams();
   const [errors, setErrors] = useState({});
   const nameOfForm = "Create";
+  const type = "place";
 
   const navigate = useNavigate();
 
@@ -49,6 +50,7 @@ function PlaceCreate(props) {
         <NavBar />
       </div>{" "}
       <PlaceForm
+        type={type}
         worldId={id}
         place={newPlace}
         setPlace={setNewPlace}
