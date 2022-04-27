@@ -4,7 +4,7 @@ import axios from "axios";
 const Register = (props) => {
   const [confirmReg, setConfirmReg] = useState("");
 
-  const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState();
 
   const [user, setUser] = useState({
     userName: "",
@@ -43,13 +43,14 @@ const Register = (props) => {
       })
       .catch((err) => {
         console.log(err);
-        setErrors(err.response.data.errors);
+        setErrors(err.response.data);
       });
   };
-
+  console.log(errors);
   return (
     <div className="d-flex flex-column align-items-center mx-5">
       {confirmReg ? <h4 style={{ color: "green" }}>{confirmReg}</h4> : null}
+      {errors ? <h4 style={{ color: "red" }}>{errors.message}</h4> : null}
       <h1 className="headingTextStyle">Register</h1>
       <form
         onSubmit={register}

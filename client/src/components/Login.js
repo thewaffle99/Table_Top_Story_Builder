@@ -41,8 +41,10 @@ const Login = (props) => {
 
   return (
     <div className="d-flex flex-column align-items-center mx-5">
+      {errorMessage ? (
+        <h4 style={{ color: "red" }}>{errorMessage.message}</h4>
+      ) : null}
       <h1 className="headingTextStyle">Login</h1>
-      <p className="danger">{errorMessage ? errorMessage : ""}</p>
       <form onSubmit={login} className="d-flex flex-column align-items-center">
         <div className="d-flex flex-column align-items-center">
           <label className="headingTextStyle">Email</label>

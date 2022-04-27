@@ -25,7 +25,7 @@ module.exports = {
               res.status(400).json(err);
             });
         } else {
-          res.status(400).json({ message: "email already taken" });
+          res.status(400).json({ message: "Email already taken" });
         }
       })
       .catch((err) => {
