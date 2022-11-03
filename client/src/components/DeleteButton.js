@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function DeleteButton(props) {
+const DeleteButton = (props) => {
   const { id, type, navigateUrl } = props;
   const navigate = useNavigate();
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import DeleteButton from "./DeleteButton";
 
-function NPCForm(props) {
+const NPCForm = (props) => {
   const { type, NPC, setNPC, submitHandler, errors, nameOfForm, navigateUrl } =
     props;
   const [user, setUser] = useState({});

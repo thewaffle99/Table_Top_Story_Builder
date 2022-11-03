@@ -6,10 +6,13 @@ import PlaceEdit from "./views/PlaceEdit";
 import WorldEdit from "./views/WorldEdit";
 import NPCCreate from "./views/NPCCreate";
 import NPCEdit from "./views/NPCEdit";
-import "bootstrap/dist/css/bootstrap.min.css";
 import WorldsHome from "./views/WorldsHome";
 import LoginReg from "./views/LoginReg";
 import Profile from "./views/Profile";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+
+
 function App() {
   return (
     <BrowserRouter>

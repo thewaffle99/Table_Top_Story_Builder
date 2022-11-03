@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import DeleteButton from "./DeleteButton";
-function WorldForm(props) {
+
+
+const WorldForm = (props) => {
   const { user, type, world, setWorld, submitHandler, errors, nameOfForm } =
     props;
 

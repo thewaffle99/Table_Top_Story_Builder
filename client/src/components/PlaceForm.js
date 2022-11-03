@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import DeleteButton from "./DeleteButton";
 
-function PlaceForm(props) {
+const PlaceForm = (props) => {
   const {
     type,
     place,

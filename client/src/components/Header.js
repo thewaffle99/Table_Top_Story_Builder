@@ -1,7 +1,7 @@
 import React from "react";
 import title from "./imgs/title.png";
 
-function Header() {
+const Header = () => {
   return (
     <div className="d-flex align-items-center justify-content-center">
       <img
